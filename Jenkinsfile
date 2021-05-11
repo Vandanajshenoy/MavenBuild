@@ -14,4 +14,7 @@ node('master') {
 	stage ('Sonar Analysis'){
 		sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=535d125b6a0a56aed1db4493fff7c09b6e150e18'
 	}
+	stage ('Archive Artifacts'){
+		archiveArtifacts artifacts: 'target/*.war'
+	}
 }
